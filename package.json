@@ -1,0 +1,29 @@
+{
+  "name": "unplugin-conditional-compilation",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "A plugin that selectively compiles code based on environmental variables,for Vite & Webpack & Esbuild & Rollup",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lykl/unplugin-conditional-compilation.git"
+  },
+  "keywords": [
+    "unplugin",
+    "vite",
+    "webpack",
+    "rollup",
+    "esbuild",
+    "conditioonal",
+    "compilation"
+  ],
+  "author": "lykl",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lykl/unplugin-conditional-compilation/issues"
+  },
+  "homepage": "https://github.com/lykl/unplugin-conditional-compilation#readme"
+}
