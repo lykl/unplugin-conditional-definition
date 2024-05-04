@@ -1,29 +1,132 @@
 {
-  "name": "unplugin-conditional-compilation",
+  "name": "unplugin-conditional-definition",
   "type": "module",
   "version": "1.0.0",
-  "description": "A plugin that selectively compiles code based on environmental variables,for Vite & Webpack & Esbuild & Rollup",
-  "main": "dist/index.js",
-  "scripts": {
-    "test": "vitest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lykl/unplugin-conditional-compilation.git"
-  },
   "keywords": [
     "unplugin",
     "vite",
     "webpack",
     "rollup",
     "esbuild",
-    "conditioonal",
-    "compilation"
+    "rolldown",
+    "rspack",
+    "transfrom",
+    "conditioonal definition"
   ],
-  "author": "lykl",
+  "description": "A plugin that selectively compiles code based on environmental variables,for Vite & Webpack & Esbuild & Rollup",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lykl/unplugin-conditional-compilation.git"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/lykl/unplugin-conditional-compilation/issues"
   },
-  "homepage": "https://github.com/lykl/unplugin-conditional-compilation#readme"
+  "homepage": "https://github.com/lykl/unplugin-conditional-compilation#readme",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch src",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "dev:vite": "pnpm run dev & pnpm -C playground/vite run dev",
+    "release": "bumpp && pnpm publish",
+    "test": "vitest",
+    "coverage": "vitest run --coverage --coverage.include=src/utils",
+    "prepare": "husky install"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./vite": {
+      "import": "./dist/vite.js",
+      "require": "./dist/vite.cjs"
+    },
+    "./webpack": {
+      "import": "./dist/webpack.js",
+      "require": "./dist/webpack.cjs"
+    },
+    "./rollup": {
+      "import": "./dist/rollup.js",
+      "require": "./dist/rollup.cjs"
+    },
+    "./esbuild": {
+      "import": "./dist/esbuild.js",
+      "require": "./dist/esbuild.cjs"
+    },
+    "./rolldown": {
+      "import": "./dist/rolldown.js",
+      "require": "./dist/rolldown.cjs"
+    },
+    "./rspack": {
+      "import": "./dist/rspack.js",
+      "require": "./dist/rspack.cjs"
+    },
+    "./types": {
+      "import": "./dist/types.js",
+      "require": "./dist/types.js"
+    },
+    "./*": "./*"
+  },
+  "lint-staged": {
+    "src/*.{js,ts,vue}": [
+      "eslint src --fix"
+    ],
+    "*.{cjs,json}": [
+      "prettier --write"
+    ],
+    "*.{css,scss,sass,less,html}": [
+      "prettier --write"
+    ],
+    "*.md": [
+      "prettier --write"
+    ]
+  },
+  "author": "lykl",
+  "dependencies": {
+    "@babel/core": "^7.24.4",
+    "@babel/generator": "^7.24.4",
+    "@babel/parser": "^7.24.4",
+    "@babel/traverse": "^7.24.1",
+    "@rollup/pluginutils": "^5.1.0",
+    "@vue/compiler-core": "^3.4.26",
+    "@vue/compiler-sfc": "^3.4.26",
+    "magic-string": "^0.30.10",
+    "parse5": "^7.1.2",
+    "postcss": "^8.4.38",
+    "unplugin": "^1.10.1"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.13.2",
+    "@babel/types": "^7.24.0",
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@types/babel__generator": "^7.6.8",
+    "@types/babel__traverse": "^7.20.5",
+    "@types/node": "^20.12.6",
+    "@vitest/coverage-v8": "^1.5.0",
+    "bumpp": "^9.4.0",
+    "eslint": "^9.1.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.2.2",
+    "nodemon": "^3.1.0",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.5",
+    "rollup": "^4.14.1",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.4",
+    "vite": "^5.2.8",
+    "vite-plugin-inspect": "^0.8.4",
+    "vitest": "^1.4.0",
+    "webpack": "^5.91.0"
+  }
 }
