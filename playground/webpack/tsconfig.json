@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "noImplicitAny": false,
+    "noUnusedLocals": true,
+    "moduleResolution": "Node",
+    "module": "ESNext",
+    "target": "ES5",
+    "lib": ["DOM", "ESNext"],
+    "baseUrl": ".",
+    "paths": {
+      "@assets/*": ["./src/assets/*"]
+    }
+    // "plugins": [{ "name": "typescript-plugin-css-modules" }]
+  },
+  "include": ["./src/**/*.ts", "./src/**/*.d.ts", "./src/*.ts", "./src/*.d.ts", "./src/**/*.vue"]
+}
