@@ -34,7 +34,8 @@
     "dev": "tsup --watch src",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
-    "dev:vite": "pnpm run dev & pnpm -C playground/vite run dev",
+    "dev:vite": "pnpm run dev & pnpm -F vite run dev",
+    "dev:webpack": "pnpm run dev & pnpm -F webpack run dev",
     "release": "bumpp && pnpm publish",
     "test": "vitest",
     "coverage": "vitest run --coverage --coverage.include=src/utils",
@@ -125,7 +126,6 @@
     "tsup": "^8.0.2",
     "typescript": "^5.4.4",
     "vite": "^5.2.8",
-    "vite-plugin-inspect": "^0.8.4",
     "vitest": "^1.4.0",
     "webpack": "^5.91.0"
   }

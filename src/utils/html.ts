@@ -38,7 +38,7 @@ export function transformHTML(code: string, id: string, env: string[], opts: Tra
     (node) => {
       if (isScriptNode(node)) {
         const scriptTextNode = node.childNodes[0]
-        if (!isTextNode(scriptTextNode))
+        if (!scriptTextNode || !isTextNode(scriptTextNode))
           return
         const { startLine } = node.sourceCodeLocation!
         const { code } = transformScript(scriptTextNode.value, id, env, {
@@ -53,7 +53,7 @@ export function transformHTML(code: string, id: string, env: string[], opts: Tra
       }
       if (isStyleNode(node)) {
         const styleTextNode = node.childNodes[0]
-        if (!isTextNode(styleTextNode))
+        if (!styleTextNode || !isTextNode(styleTextNode))
           return
         const { startLine } = node.sourceCodeLocation!
         const { code } = transformStyle(styleTextNode.value, id, env, {

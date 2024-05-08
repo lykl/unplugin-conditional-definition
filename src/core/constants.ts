@@ -16,7 +16,7 @@ export const SVELTE_FILE_REGEXP = /\.svelte$/
 
 export const HTML_FILE_REGEXP = /\.html$/
 
-export const CSS_FILE_REGEXP = /\.(?:sa|s?c)ss$/
+export const CSS_FILE_REGEXP = /\.(?:sa|s?c|le)ss$/
 
 export const JS_FILE_REGEXP = /\.[jt]sx?$/
 
