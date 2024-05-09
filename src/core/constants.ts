@@ -27,7 +27,8 @@ export const DEFAULT_EXCLUDE = [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /[\
 export const defaultOptions: Options = {
   env: [],
   mode: 'strict',
-  include: DEFAULT_INCLUDE,
+  js: true,
+  scope: ['./src/**/*'],
   exclude: DEFAULT_EXCLUDE,
 }
 

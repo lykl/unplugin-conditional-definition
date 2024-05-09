@@ -99,6 +99,7 @@
     "@rollup/pluginutils": "^5.1.0",
     "@vue/compiler-core": "^3.4.26",
     "@vue/compiler-sfc": "^3.4.26",
+    "fast-glob": "^3.3.2",
     "magic-string": "^0.30.10",
     "parse5": "^7.1.2",
     "postcss": "^8.4.38",

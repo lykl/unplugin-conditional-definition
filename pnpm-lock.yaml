@@ -29,6 +29,9 @@ importers:
       '@vue/compiler-sfc':
         specifier: ^3.4.26
         version: 3.4.26
+      fast-glob:
+        specifier: ^3.3.2
+        version: 3.3.2
       magic-string:
         specifier: ^0.30.10
         version: 0.30.10
