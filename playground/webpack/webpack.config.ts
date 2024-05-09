@@ -8,7 +8,6 @@ import path from 'node:path'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
 const isDEV = process.env.NODE_ENV === 'development'
-
 export default <Configuration>{
   mode: (process.env.NODE_ENV as any) ?? 'development',
   entry: './src/main.ts',
@@ -36,8 +35,7 @@ export default <Configuration>{
     !isDEV ? new MiniCssExtractPlugin() : null,
     UnpluginConditionalDefinition({
       env: ['LABTOP'],
-      mode: 'strict',
-      include: [/\.(?:sa|s?c)ss$/, /\.[jt]sx?$/, /\.vue$/],
+      css: true,
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',

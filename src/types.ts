@@ -10,13 +10,46 @@ export interface Options {
    *
    */
   env: string[]
-  mode: 'ignore' | 'transform' | 'strict'
   /**
-   * Rules to include transforming target.
-   *
-   * @default [/\.[jt]sx?$/, /\.vue$/, /\.svelte$/]
+   * This option controls the format of the comments.
+   * The `strict` mode will throw an Error if you write comments in the wrong format.
+   * The `transform` mode will try to transform your comments to the correct format.
+   * The `ignore` mode will ignore the format check.
+   * @default 'strict'
    */
-  include?: FilterPattern
+  mode?: 'ignore' | 'transform' | 'strict'
+
+  /**
+   * transform code in these files
+   * @default ['./src\/**\/*']
+   */
+  scope?: string[]
+  /**
+   * don't transform code in these files
+   */
+  external?: string[]
+
+  /**
+   * Whether js compilation is enabled
+   * @default true
+   */
+  js?: boolean
+  /**
+   * Same as js
+   * @default false
+   */
+  css?: boolean
+  /**
+   * Same as js
+   * Webpack does not support. If you want to transform .vue files, you must add loader after the vue-loader
+   * @default false
+   */
+  vue?: boolean
+  /**
+   * Same as js
+   * @default false
+   */
+  html?: boolean
 
   /**
    * Rules to exclude transforming target.

@@ -9,7 +9,8 @@ export default defineConfig({
     vue(),
     UnpluginConditionalDefinitionVite({
       env: ['LABTOP'],
-      mode: 'strict',
+      vue: true,
+      css: true,
     }),
     Inspect(),
   ],
