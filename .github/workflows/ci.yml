@@ -31,7 +31,7 @@ jobs:
         run: nci
 
       - name: Lint
-        run: nr lint
+        run: nr lint --fix
 
   test:
     runs-on: ${{ matrix.os }}
@@ -61,7 +61,7 @@ jobs:
 
       - name: test coverage
         run: nr coverage
-        
+
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4.0.1
         with:
