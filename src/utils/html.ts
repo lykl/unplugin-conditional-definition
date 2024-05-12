@@ -4,7 +4,7 @@ import type { DefaultTreeAdapterMap } from 'parse5'
 import {
   Stack,
   checkStack,
-  dfs,
+  bfs,
   isConditionalEndStatement,
   isConditionalStartStatement,
   isCurrentEvironment,
@@ -32,14 +32,13 @@ export function transformHTML(code: string, id: string, env: string[], opts: Tra
   const ast = parse(code, { sourceCodeLocationInfo: true })
   const stack = new Stack<DefaultTreeAdapterMap['commentNode']>()
   const ms = new MagicString(code)
-  dfs(
+  bfs(
     ast as unknown as DefaultTreeAdapterMap['childNode'],
     null,
     (node) => {
       if (isScriptNode(node)) {
         const scriptTextNode = node.childNodes[0]
-        if (!scriptTextNode || !isTextNode(scriptTextNode))
-          return
+        if (!scriptTextNode || !isTextNode(scriptTextNode)) return
         const { startLine } = node.sourceCodeLocation!
         const { code } = transformScript(scriptTextNode.value, id, env, {
           mode,
@@ -53,8 +52,7 @@ export function transformHTML(code: string, id: string, env: string[], opts: Tra
       }
       if (isStyleNode(node)) {
         const styleTextNode = node.childNodes[0]
-        if (!styleTextNode || !isTextNode(styleTextNode))
-          return
+        if (!styleTextNode || !isTextNode(styleTextNode)) return
         const { startLine } = node.sourceCodeLocation!
         const { code } = transformStyle(styleTextNode.value, id, env, {
           mode,
@@ -66,12 +64,10 @@ export function transformHTML(code: string, id: string, env: string[], opts: Tra
         ms.update(styleTextNode.sourceCodeLocation!.startOffset, styleTextNode.sourceCodeLocation!.endOffset, code)
         return true
       }
-      if (!isCommentNode(node))
-        return
+      if (!isCommentNode(node)) return
       if (isConditionalStartStatement(node.data)) {
         stack.push(node)
-      }
-      else if (isConditionalEndStatement(node.data)) {
+      } else if (isConditionalEndStatement(node.data)) {
         const lc = stack.pop()
         if (!lc) {
           throwError(
@@ -95,7 +91,7 @@ export function transformHTML(code: string, id: string, env: string[], opts: Tra
         }
       }
     },
-    node => (node as DefaultTreeAdapterMap['element']).childNodes,
+    (node) => (node as DefaultTreeAdapterMap['element']).childNodes,
   )
   checkStack(stack, id, (stack) => {
     const c = stack.peek()

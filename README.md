@@ -3,10 +3,10 @@
 A plugin that selectively compiles code based on environmental variables,for Vite &amp; Webpack &amp; Esbuild &amp; Rollup
 
 <div>
-<img src="https://img.shields.io/npm/dm/unplugin-conditional-conpilation" />
-<img src="https://img.shields.io/github/last-commit/Talljack/unplugin-conditional-conpilation
+<img src="https://img.shields.io/npm/dm/unplugin-conditional-definition" />
+<img src="https://img.shields.io/github/last-commit/lykl/unplugin-conditional-definition
 ">
-<img src="https://codecov.io/gh/Talljack/unplugin-conditional-conpilation/graph/badge.svg?token=KI043GVTMM"/>
+<img src="https://codecov.io/gh/lykl/unplugin-conditional-definition/graph/badge.svg?token=KI043GVTMM"/>
 </div>
 
 ## Install
