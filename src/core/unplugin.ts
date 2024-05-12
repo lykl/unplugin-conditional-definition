@@ -2,6 +2,7 @@ import type { UnpluginContextMeta } from 'unplugin'
 import { createUnplugin } from 'unplugin'
 import type { Options } from '../types'
 import useWebpackCompiler from '../webpack/plugin'
+import useRspackCompiler from '../rspack/plugin'
 import { defaultOptions } from './constants'
 import { createUnpluginContext } from './unpluginContext'
 
@@ -19,6 +20,9 @@ export default createUnplugin<Options>((options: Options, meta: UnpluginContextM
     },
     webpack(compiler) {
       useWebpackCompiler(compiler, options)
+    },
+    rspack(compiler) {
+      useRspackCompiler(compiler, options)
     },
   }
 })

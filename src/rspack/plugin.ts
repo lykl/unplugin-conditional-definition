@@ -1,12 +1,12 @@
 import { resolve } from 'node:path'
-import type { Compiler, RuleSetRule } from 'webpack'
+import type { Compiler, RuleSetRule } from '@rspack/core'
 import type { Options } from '@/types'
 
-export default function useWebpackCompiler(compiler: Compiler, options: Options) {
+export default function useRspackCompiler(compiler: Compiler, options: Options) {
   options = Object.freeze(options)
   if (!options.vue)
     return
-  const LOADER = resolve(__dirname, __DEV__ ? '../../dist/webpack/loader' : 'webpack/loader')
+  const LOADER = resolve(__dirname, __DEV__ ? '../../dist/rspack/loader' : 'rspack/loader')
 
   // 1.find vue loader rule
   const rules = compiler.options.module.rules as RuleSetRule[]
@@ -21,9 +21,9 @@ export default function useWebpackCompiler(compiler: Compiler, options: Options)
     if (
       ~(loaderIndex = rule.use.findIndex((u) => {
         const f
-          = u && typeof u !== 'function' && (typeof u === 'string' ? u.startsWith(LOADER) : u.loader?.startsWith(LOADER))
+          = u && typeof u !== 'function' && (typeof u === 'string' ? u.startsWith(LOADER) : u.loader.startsWith(LOADER))
         if (f)
-          loader = typeof u === 'string' ? u : u.loader!
+          loader = typeof u === 'string' ? u : u.loader
         return f
       }))
     ) {

@@ -36,6 +36,7 @@ export default <Configuration>{
     UnpluginConditionalDefinition({
       env: ['LABTOP'],
       css: true,
+      vue: true,
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',

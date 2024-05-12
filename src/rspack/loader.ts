@@ -1,5 +1,5 @@
 import { isAbsolute, normalize } from 'node:path'
-import type { LoaderContext } from 'webpack'
+import type { LoaderContext } from '@rspack/core'
 import fg from 'fast-glob'
 import type { Options } from '@/types'
 import { transfromVueSFC } from '@/utils'

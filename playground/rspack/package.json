@@ -1,0 +1,19 @@
+{
+  "name": "rspack",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "rsbuild dev --open",
+    "build": "rsbuild build",
+    "preview": "rsbuild preview"
+  },
+  "dependencies": {
+    "vue": "^3.4.19"
+  },
+  "devDependencies": {
+    "@rsbuild/core": "^0.6.13",
+    "@rsbuild/plugin-vue": "^0.6.13",
+    "typescript": "^5.4.2",
+    "unplugin-conditional-definition": "workspace:*"
+  }
+}
