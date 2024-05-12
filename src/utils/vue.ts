@@ -2,7 +2,7 @@ import type { CommentNode, Node } from '@vue/compiler-core'
 import { NodeTypes } from '@vue/compiler-core'
 import { parse } from '@vue/compiler-sfc'
 import MagicString from 'magic-string'
-import { Stack, checkStack, dfs, isConditionalEndStatement, isConditionalStartStatement, throwError } from './core'
+import { Stack, checkStack, bfs, isConditionalEndStatement, isConditionalStartStatement, throwError } from './core'
 import { transformScript } from './script'
 import { transformStyle } from './style'
 import { isCurrentEvironment } from '.'
@@ -34,17 +34,15 @@ export function transfromVueSFC(
   const ms = new MagicString(code, { filename: ast.descriptor.filename })
   const { template, script, scriptSetup, styles } = ast.descriptor
   if (template?.ast) {
-    dfs<MaybeParentNode>(
+    bfs<MaybeParentNode>(
       template.ast,
       null,
       (node, parentNode) => {
-        if (!parentNode)
-          return
+        if (!parentNode) return
         if (isCommentNode(node)) {
           if (isConditionalStartStatement(node.content)) {
             stack.push([node, parentNode])
-          }
-          else if (isConditionalEndStatement(node.content)) {
+          } else if (isConditionalEndStatement(node.content)) {
             const lc = stack.pop()
             if (!lc)
               throwError('The conditional comment is not closed.', id, node.loc.start.line, node.loc.start.column)
@@ -63,7 +61,7 @@ export function transfromVueSFC(
           }
         }
       },
-      node => node.children,
+      (node) => node.children,
     )
     checkStack(stack, id, (stack) => {
       const [c] = stack.peek()
