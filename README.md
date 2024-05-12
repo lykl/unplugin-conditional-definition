@@ -130,7 +130,7 @@ module.exports = {
 ```ts
 // rspack.config.js
 const RspackPlugin = require('unplugin-conditional-definition/rspack').default
-const ConditionalDefinitionLoader = require('unplugin-conditional-definition/webpack').loader
+const ConditionalDefinitionLoader = require('unplugin-conditional-definition/rspack').loader
 const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
