@@ -35,8 +35,8 @@
     "lint:fix": "eslint src --fix",
     "dev:vite": "pnpm run dev & pnpm -F vite run dev",
     "dev:webpack": "pnpm run dev & pnpm -F webpack run dev",
-    "release": "bumpp && pnpm publish",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "release": "bumpp && pnpm run changelog && pnpm publish",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "test": "vitest",
     "coverage": "vitest run --coverage --coverage.include=src/utils",
     "prepare": "husky install"
