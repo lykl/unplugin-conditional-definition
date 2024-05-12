@@ -1,7 +1,7 @@
 import { defineConfig } from 'tsup'
 
 export default defineConfig({
-  entry: ['./src/*.ts', './src/webpack/loader.ts'],
+  entry: ['./src/*.ts', './src/webpack/loader.ts', './src/rspack/loader.ts'],
   clean: true,
   format: ['esm', 'cjs'],
   dts: true,

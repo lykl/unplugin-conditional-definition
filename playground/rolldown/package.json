@@ -1,0 +1,12 @@
+{
+  "name": "rolldown",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "rolldown -c rolldown.config.js"
+  },
+  "devDependencies": {
+    "rolldown": "^0.10.2",
+    "unplugin-conditional-definition": "workspace:*"
+  }
+}
